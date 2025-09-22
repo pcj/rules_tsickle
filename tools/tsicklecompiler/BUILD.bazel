@@ -2,7 +2,7 @@ load("@aspect_rules_js//js:defs.bzl", "js_binary")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
-    name = "tsicklefrontend",
+    name = "tsicklecompiler_lib",
     srcs = [
         "index.ts",
     ],
@@ -11,6 +11,8 @@ ts_project(
     tsconfig = "//:tsconfig",
     deps = [
         "//:node_modules/@types/node",
+        "//:node_modules/tsickle",
+        "//:node_modules/tslib",
         "//:node_modules/typescript",
     ],
 )
@@ -18,10 +20,8 @@ ts_project(
 # Try it out:
 # $ bazel run server
 js_binary(
-    name = "server",
-    data = [
-        ":tsicklefrontend",
-        # ":package.json",
-    ],
+    name = "tsicklecompiler",
+    data = [":tsicklecompiler_lib"],
     entry_point = "index.js",
+    visibility = ["//visibility:public"],
 )

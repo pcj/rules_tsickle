@@ -11,14 +11,31 @@ importers:
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
+      tsickle:
+        specifier: 0.46.3
+        version: 0.46.3(typescript@5.6.2)
+      tslib:
+        specifier: 2.8.1
+        version: 2.8.1
       typescript:
         specifier: 5.6.2
         version: 5.6.2
 
 packages:
 
+  '@types/minimist@1.2.5':
+    resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
+
   '@types/node@24.5.2':
     resolution: {integrity: sha512-FYxk1I7wPv3K2XBaoyH2cTnocQEu8AOZ60hPbsyukMPLv5/5qr7V1i8PLHdl6Zf87I+xZXFvPCXYjiTFq+YSDQ==}
+
+  tsickle@0.46.3:
+    resolution: {integrity: sha512-9PDXxOrtn2AdpvDin6FLGveXVGg8ec3ga8fh8mPR5lz9KtitW6riVgxgagicdfF1rgiBxDeH+5hVowPXhmZbYQ==}
+    peerDependencies:
+      typescript: ~4.7.2
+
+  tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
   typescript@5.6.2:
     resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
@@ -30,9 +47,18 @@ packages:
 
 snapshots:
 
+  '@types/minimist@1.2.5': {}
+
   '@types/node@24.5.2':
     dependencies:
       undici-types: 7.12.0
+
+  tsickle@0.46.3(typescript@5.6.2):
+    dependencies:
+      '@types/minimist': 1.2.5
+      typescript: 5.6.2
+
+  tslib@2.8.1: {}
 
   typescript@5.6.2: {}
 
