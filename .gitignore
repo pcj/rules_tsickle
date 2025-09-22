@@ -1,0 +1,6 @@
+# VSCode related
+/.vscode
+
+# Bazel related
+/bazel-*
+MODULE.bazel.lock
