@@ -1,1 +1,3 @@
-console.log('hello, world!');
+export function sayHello(name: string): string {
+    return `hello, ${name}!`;
+}
