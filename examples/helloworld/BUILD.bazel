@@ -3,5 +3,4 @@ load("//rules:defs.bzl", "closure_ts_library")
 closure_ts_library(
     name = "lib",
     srcs = ["index.ts"],
-    tsconfig = "//:tsconfig",
 )
