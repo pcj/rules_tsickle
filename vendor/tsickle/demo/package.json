@@ -1,0 +1,21 @@
+{
+  "name": "tsickle-demo",
+  "version": "0.0.0",
+  "description": "sample app demonstrating tsickle",
+  "main": "demo.js",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "minimist": "^1.2.3",
+    "tsickle": "file:../",
+    "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@types/minimist": "1.2.0",
+    "@types/node": "^10.5.6"
+  },
+  "scripts": {
+    "build": "(cd ../ && yarn build) && tsc",
+    "demo": "node --preserve-symlinks build/demo.js -- --outDir `pwd`/tsickle-out"
+  }
+}

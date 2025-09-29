@@ -1,0 +1,38 @@
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+
+ts_project(
+    name = "src",
+    srcs = [
+        "annotator_host.ts",
+        "cli_support.ts",
+        "closure_externs.js",
+        "clutz.ts",
+        "decorator_downlevel_transformer.ts",
+        "decorators.ts",
+        "enum_transformer.ts",
+        "externs.ts",
+        "fileoverview_comment_transformer.ts",
+        "googmodule.ts",
+        "jsdoc.ts",
+        "jsdoc_transformer.ts",
+        "module_type_translator.ts",
+        "modules_manifest.ts",
+        "ns_transformer.ts",
+        "path.ts",
+        "summary.ts",
+        "transformer_util.ts",
+        "ts_migration_exports_shim.ts",
+        "tsickle.ts",
+        "tsickle_declaration_marker.ts",
+        "type_translator.ts",
+    ],
+    declaration = True,
+    source_map = True,
+    transpiler = "tsc",
+    tsconfig = "//vendor/tsickle:tsconfig",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:node_modules/@types/node",
+        "//:node_modules/typescript",
+    ],
+)

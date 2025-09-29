@@ -1,0 +1,26 @@
+# Cache key for CircleCI. We want to invalidate the cache whenever the Bazel workspace or the
+# NPM dependencies changed.
+var_1: &cache_key angular-tsickle-{{ checksum "WORKSPACE" }}-{{ checksum "yarn.lock" }}
+
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/tsickle
+    # Default docker image for CircleCI jobs with Bazel installed. The version of Bazel is controlled
+    # by the docker image version. e.g "google/bazel:0.29.0" installs Bazel v0.29.0. When updating this
+    # version, consider updating the minimum required Bazel version in the "WORKSPACE" file.
+    docker:
+      - image: l.gcr.io/google/bazel:0.29.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: *cache_key
+      - run: bazel run @nodejs//:yarn
+      - run: bazel run @nodejs//:bin/yarn lint
+      - run: bazel test //...
+      - save_cache:
+          key: *cache_key
+          paths:
+            - "node_modules"
+            - "~/bazel_repository_cache"

@@ -1,6 +1,6 @@
-load("//rules:defs.bzl", "closure_ts_library")
+load("//rules:defs.bzl", "closure_ts_compile")
 
-closure_ts_library(
+closure_ts_compile(
     name = "lib",
     srcs = ["index.ts"],
 )

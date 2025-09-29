@@ -3,9 +3,13 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { promises as asyncfs } from 'fs';
 import ts from 'typescript';
-import * as tsickle from 'tsickle';
+import * as tsickle from '../../vendor/tsickle/src/tsickle';
 
 const DEBUG = false;
+
+function getExternsPath(): string | undefined {
+    return process.env.EXTERNS_PATH;
+}
 
 function getExecRoot(): string {
     return process.env.JS_BINARY__EXECROOT || '.';
@@ -55,7 +59,7 @@ function run(
 ): tsickle.EmitResult {
     // Use absolute paths to determine what files to process since files may be imported using
     // relative or absolute paths
-    // const absoluteFileNames = fileNames.map(i => path.resolve(i));
+    fileNames = fileNames.map(i => path.resolve(i));
 
     const compilerHost = ts.createCompilerHost(options);
     const program = ts.createProgram(fileNames, options, compilerHost);
@@ -80,7 +84,8 @@ function run(
             console.error(ts.formatDiagnostics([warning], compilerHost)),
         options,
         generateExtraSuppressions: true,
-        moduleResolutionHost: compilerHost,
+        provideExternalModuleDtsNamespace: true,
+        transformDynamicImport: "closure",
     };
 
     const diagnostics = ts.getPreEmitDiagnostics(program);
@@ -92,6 +97,7 @@ function run(
             externs: {},
             emitSkipped: true,
             emittedFiles: [],
+            fileSummaries: new Map(),
         };
     }
 
@@ -100,6 +106,9 @@ function run(
 
 async function main() {
     const execRoot = getExecRoot();
+    const externsPath = getExternsPath();
+
+    await listExecrootFiles();
 
     const args = process.argv.slice(2);
     const inputFiles = getInputFiles(execRoot, args);
@@ -133,15 +142,14 @@ async function main() {
         return 1;
     }
 
-    // if (settings.externsPath) {
-    //     fs.mkdirSync(path.dirname(settings.externsPath), { recursive: true });
-    //     fs.writeFileSync(
-    //         settings.externsPath,
-    //         tsickle.getGeneratedExterns(result.externs, config.options.rootDir || ''));
-    // }
+    if (externsPath) {
+        fs.mkdirSync(path.dirname(externsPath), { recursive: true });
+        fs.writeFileSync(
+            externsPath,
+            tsickle.getGeneratedExterns(result.externs, compilerOptions.rootDir || ''));
+    }
 
     return 0;
-
 }
 
 void main()

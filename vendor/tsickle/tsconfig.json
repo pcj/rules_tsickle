@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "es2020"
+    ],
+    "declaration": true,
+    "types": [
+      // Note, we don't include `jasmine` here, as that's a test-only typing.
+      // To prevent accidental use of jasmine in production code, we instead
+      // bring the jasmine global typing with ///<reference/> pragmas in
+      // source files that use it.
+      "node"
+    ],
+    "sourceMap": true,
+    "target": "es2015",
+    "strict": true,
+    "paths": {
+      "tsickle": [
+        "./src/tsickle.ts"
+      ]
+    },
+  },
+  "include": [
+    "src/*.ts",
+    "test/*.ts",
+    "demo/*.ts"
+  ]
+}
