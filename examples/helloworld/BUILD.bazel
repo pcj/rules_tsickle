@@ -1,13 +1,14 @@
 load("//rules:defs.bzl", "closure_ts_compile")
+load("//rules:testing.bzl", "golden_file_test")
 
 closure_ts_compile(
     name = "lib",
     srcs = ["index.ts"],
 )
 
-# bazel run //examples/helloworld:files.update
-# bazel test //examples/helloworld:files.test
-# golden_filegroup(
-#     name = "files",
-#     srcs = [":index.ts"],
-# )
+# bazel test //examples/helloworld:golden_test
+# bazel run //examples/helloworld:golden_test.update
+golden_file_test(
+    name = "golden_test",
+    srcs = [":lib"],
+)
