@@ -33,6 +33,7 @@ ts_project(
     visibility = ["//visibility:public"],
     deps = [
         "//:node_modules/@types/node",
+        "//:node_modules/google-protobuf",
         "//:node_modules/typescript",
     ],
 )

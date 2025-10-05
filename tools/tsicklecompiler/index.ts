@@ -48,6 +48,7 @@ function getTsCompilerOptions(): ts.CompilerOptions {
         outDir: getBazelBinDir(),
         rootDir: getExecRoot(),
         declaration: true,
+        importHelpers: true,
         strict: true
     };
 }
@@ -83,7 +84,7 @@ function run(
         logWarning: (warning) =>
             console.error(ts.formatDiagnostics([warning], compilerHost)),
         options,
-        generateExtraSuppressions: true,
+        generateExtraSuppressions: false,
         provideExternalModuleDtsNamespace: true,
         transformDynamicImport: "closure",
     };

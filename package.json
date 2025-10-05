@@ -11,7 +11,8 @@
   "devDependencies": {
     "tslib": "2.8.1",
     "typescript": "5.2.2",
-    "@types/node": "^24.5.2"
+    "@types/node": "^24.5.2",
+    "google-protobuf": "^4.0.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": []

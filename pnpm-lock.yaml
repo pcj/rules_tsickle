@@ -11,6 +11,9 @@ importers:
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
+      google-protobuf:
+        specifier: ^4.0.0
+        version: 4.0.0
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -254,6 +257,9 @@ packages:
     resolution: {integrity: sha512-OKcsiIqhRccAc/c82Bfp5fD9a844kjnIe8fP/LkCdn7Bnv+DP5/l0KsYwm+DQqo1a6Q+f8Lfdp/anb3+CGZQzA==}
     engines: {node: '>=10'}
     hasBin: true
+
+  google-protobuf@4.0.0:
+    resolution: {integrity: sha512-b8wmenhUMf2WNL+xIJ/slvD/hEE6V3nRnG86O2bzkBrMweM9gnqZE1dfXlDjibY3aXJXDNbAHepevYyQ7qWKsQ==}
 
   growl@1.10.5:
     resolution: {integrity: sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==}
@@ -642,6 +648,8 @@ snapshots:
       google-closure-compiler-linux: 20230411.0.0
       google-closure-compiler-osx: 20230411.0.0
       google-closure-compiler-windows: 20230411.0.0
+
+  google-protobuf@4.0.0: {}
 
   growl@1.10.5: {}
 
