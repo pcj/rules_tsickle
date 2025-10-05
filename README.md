@@ -44,7 +44,7 @@ closure_ts_compile(
 - download npm deps and prepare the `js_binary` tsickle runner
   (`//tools/tsicklecompiler`).
 - run the tool, which roughly works as follows:
-  - prepare in internal/minimal `tsconfig.json` configuration.
+  - prepare an internal/minimal `tsconfig.json` configuration.
   - runs `tsc` over the inputs to generate a `ts.Program`
   - runs tsickle over the `ts.Program` to AST-rewrite/transform it.
   - emits the transformed `.js` files.
@@ -52,3 +52,7 @@ closure_ts_compile(
   - each `{basename}.ts` will produce an equivalent `{basename}.js` file
   - if any `.d.ts` files are present, a single `{name}-externs.js` file will be
     produced.
+
+`closure_ts_compile` can take `deps` on other `closure_ts_compile` rules.  The
+source `.ts` files will be made available to `tsc`.  Only direct `.ts` files in
+the primary rule will emitted.
