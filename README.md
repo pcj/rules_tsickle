@@ -2,9 +2,9 @@
 
 ## What?
 
-`rules_tsickle` provides the `closure_ts_compile` rule that transforms `.ts`
-files into closure-annotated `.js` files.  It contains a vendored copy of
-<https://github.com/angular/tsickle> that has been archived.
+`rules_tsickle` provides a `closure_ts_compile` rule that transforms `.ts` files
+into closure-annotated `.js` files.  It contains a vendored copy of
+<https://github.com/angular/tsickle> (which was archived in May 2025).
 
 ## Why?
 
@@ -39,11 +39,16 @@ closure_ts_compile(
 )
 ```
 
-A `bazel build :index` will:
+`bazel build :index` will:
 
-- build the `js_binary` tsickle runner (`//tools/tsicklecompiler`).
+- download npm deps and prepare the `js_binary` tsickle runner
+  (`//tools/tsicklecompiler`).
 - run the tool, which roughly works as follows:
   - prepare in internal/minimal `tsconfig.json` configuration.
   - runs `tsc` over the inputs to generate a `ts.Program`
-  - runs tsickle over the `ts.Program` to AST-rewrite it
-  - emits the final generated `.js` files.
+  - runs tsickle over the `ts.Program` to AST-rewrite/transform it.
+  - emits the transformed `.js` files.
+- output files:
+  - each `{basename}.ts` will produce an equivalent `{basename}.js` file
+  - if any `.d.ts` files are present, a single `{name}-externs.js` file will be
+    produced.
