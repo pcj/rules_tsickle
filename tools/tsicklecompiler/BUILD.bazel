@@ -9,10 +9,8 @@ ts_project(
     tsconfig = "//:tsconfig",
     deps = [
         "//:node_modules/@types/node",
-        # "//:node_modules/tsickle",
         "//:node_modules/tslib",
         "//:node_modules/typescript",
-        # "//vendor/tsickle/src:pkg",
         "//vendor/tsickle/src",
     ],
 )
