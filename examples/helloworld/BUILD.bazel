@@ -4,3 +4,10 @@ closure_ts_compile(
     name = "lib",
     srcs = ["index.ts"],
 )
+
+# bazel run //examples/helloworld:files.update
+# bazel test //examples/helloworld:files.test
+# golden_filegroup(
+#     name = "files",
+#     srcs = [":index.ts"],
+# )
