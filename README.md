@@ -56,3 +56,9 @@ closure_ts_compile(
 `closure_ts_compile` can take `deps` on other `closure_ts_compile` rules.  The
 source `.ts` files will be made available to `tsc`.  Only direct `.ts` files in
 the primary rule will emitted.
+
+### Versioning
+
+The `rules_tsickle` initial version is `1.0.0` not because of a long history of
+development, but because it is anticipated this repo will not see a large amount
+of future development.
