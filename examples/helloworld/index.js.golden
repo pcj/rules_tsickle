@@ -1,0 +1,15 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: examples/helloworld/index.ts
+ */
+goog.module('examples.helloworld.index');
+var module = module || { id: 'examples/helloworld/index.ts' };
+goog.require('tslib');
+/**
+ * @param {string} name
+ * @return {string}
+ */
+function sayHello(name) {
+    return `hello, ${name}!`;
+}
+exports.sayHello = sayHello;
