@@ -1,1 +1,8 @@
 common --enable_workspace=false
+
+# Don't leak PATH and LD_LIBRARY_PATH into the build.
+build --incompatible_strict_action_env
+
+# To facilitate testing in bazelci incompatible flags
+# @see https://github.com/bazelbuild/bazel/pull/26906#issue-3386957462
+build --incompatible_autoload_externally=
