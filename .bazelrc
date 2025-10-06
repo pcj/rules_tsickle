@@ -6,3 +6,6 @@ build --incompatible_strict_action_env
 # To facilitate testing in bazelci incompatible flags
 # @see https://github.com/bazelbuild/bazel/pull/26906#issue-3386957462
 build --incompatible_autoload_externally=
+
+# For bazel 8 BCR CI
+build --incompatible_disable_native_repo_rules
